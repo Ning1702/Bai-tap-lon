@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhà hàng BTL</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="thucdon.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">BTL<span></span></div>
+      <div class="nav-links">
+        <a href="trangchu.html">Trang chủ</a>
+        <a href="thucdon.html">Thực đơn</a>
+        <a href="datban.html">Đặt bàn</a>
+      </div>
+      <div class="login">
+        <button>Đăng nhập</button>
+      </div>
+    </div>
+    <div id="wp-products">
+      <h2>Thực đơn</h2>
+
+      <ul id="list-products">
+        <div class="item">
+          <img
+            src="https://img.lovepik.com/photo/48008/6978.jpg_wh860.jpg"
+            alt=""
+          />
+          <div class="name">beefsteak</div>
+          <div class="price">400.000 VNĐ</div>
+          <div class="order-button">
+            <button onclick="addToCart('beefsteak', '400.000 VNĐ')">
+              Đặt món
+            </button>
+          </div>
+        </div>
+        <div class="item">
+          <img
+            src="https://lasinfoniavietnam.com/wp-content/uploads/2023/06/the-eroica-restaurant-food-1-1.jpg"
+            alt=""
+          />
+          <div class="name">Bồ Câu Nướng Mỹ</div>
+          <div class="price">250.000 VNĐ</div>
+          <div class="order-button">
+            <button
+              onclick="addToCart('Bồ Câu Nướng Mỹ', '250.000 VNĐ')"
+            >
+              Đặt món
+            </button>
+          </div>
+        </div>
+        <div class="item">
+          <img
+            src="https://lasinfoniavietnam.com/wp-content/uploads/2023/06/the-eroica-restaurant-food-22-1-scaled.jpg"
+            alt=""
+          />
+          <div class="name">Sò Điệp Hokkaido</div>
+          <div class="price">200.000 VNĐ</div>
+          <div class="order-button">
+            <button
+              onclick="addToCart('Sò Điệp Hokkaido', '200.000 VNĐ')"
+            >
+              Đặt món
+            </button>
+          </div>
+        </div>
+        <div class="item">
+          <img
+            src="https://sonorestaurant.com.au/wp-content/uploads/2024/04/home-slide-3.jpg"
+            alt=""
+          />
+          <div class="name">Cá hồi</div>
+          <div class="price">300.000 VNĐ</div>
+          <div class="order-button">
+            <button onclick="addToCart('Cá hồi', '300.000 VNĐ')">
+              Đặt món
+            </button>
+          </div>
+        </div>
+        <div class="item">
+          <img
+            src="https://sonorestaurant.com.au/wp-content/uploads/2024/04/Japanese-Tempura-Sono-Restaurant.jpg"
+            alt=""
+          />
+          <div class="name">Tôm chiên</div>
+          <div class="price">150.000 VNĐ</div>
+          <div class="order-button">
+            <button onclick="addToCart('Tôm chiên', '150.000 VNĐ')">
+              Đặt món
+            </button>
+          </div>
+        </div>
+        <div class="item">
+          <img
+            src="https://sonorestaurant.com.au/wp-content/uploads/2024/04/home-slide-1.jpg"
+            alt=""
+          />
+          <div class="name">Sushi</div>
+          <div class="price">500.000 VNĐ</div>
+          <div class="order-button">
+            <button onclick="addToCart('Sushi', '500.000 VNĐ')">Đặt món</button>
+          </div>
+        </div>
+      </ul>
+    </div>
+        <div class="contact-info">
+      <div class="contact-column">
+        <h3>Thông tin liên hệ</h3>
+        <p><strong>Địa điểm:</strong> Hàng Đậu</p>
+        <p><strong>Giờ mở cửa:</strong> 11:00 - 22:00</p>
+        <p><strong>Hotline:</strong> (+84) 4354354354</p>
+        <p><strong>Email:</strong> nhahangBTL@gmail.com</p>
+      </div>
+      <div class="contact-column">
+        <h3>Mạng xã hội</h3>
+        <p>
+          <strong>Facebook:</strong>
+          <a href="https://NhaHangBTL.fb.vn">NhaHangBTL.fb.vn</a>
+        </p>
+        <p>
+          <strong>YouTube:</strong>
+          <a href="https://NhaHangBTL.youtube.vn">NhaHangBTL.youtube.vn</a>
+        </p>
+        <p>
+          <strong>TikTok:</strong>
+          <a href="https://NhaHangBTL.tiktok.vn">NhaHangBTL.tiktok.vn</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? "1" : "0";
+          const orderButton = slide.querySelector(`.order-button${i + 1}`);
+          if (orderButton) {
+            orderButton.style.display = i === index ? "block" : "none";
+          }
+        });
+      }
+
+      document.querySelector(".next-button").addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      document.querySelector(".back-button").addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      showSlide(currentSlide);
+
+      function addToCart(dishName, price) {
+        let orderedDishes =
+          JSON.parse(localStorage.getItem("orderedDishes")) || [];
+
+        const existingDish = orderedDishes.find(
+          (dish) => dish.name === dishName
+        );
+        if (existingDish) {
+          existingDish.quantity += 1;
+        } else {
+          orderedDishes.push({ name: dishName, price: price, quantity: 1 });
+        }
+        localStorage.setItem("orderedDishes", JSON.stringify(orderedDishes));
+
+        alert(`${dishName} đã được thêm vào giỏ hàng!`);
+      }
+    </script>
+  </body>
+</html>
