@@ -131,31 +131,6 @@
     </div>
 
     <script>
-      const slides = document.querySelectorAll(".slide");
-      let currentSlide = 0;
-
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.style.opacity = i === index ? "1" : "0";
-          const orderButton = slide.querySelector(`.order-button${i + 1}`);
-          if (orderButton) {
-            orderButton.style.display = i === index ? "block" : "none";
-          }
-        });
-      }
-
-      document.querySelector(".next-button").addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      });
-
-      document.querySelector(".back-button").addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-      });
-
-      showSlide(currentSlide);
-
       function addToCart(dishName, price) {
         let orderedDishes =
           JSON.parse(localStorage.getItem("orderedDishes")) || [];
