@@ -1,0 +1,251 @@
+<html>
+  <head>
+    <title>Nhà hàng BTL</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="datban.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">BTL<span></span></div>
+      <div class="nav-links">
+        <a href="Trangchu.html">Trang chủ</a>
+        <a href="thucdon.html">Thực đơn</a>
+        <a href="datban.html">Đặt bàn</a>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Thông Tin Đặt Bàn Online</h1>
+      <table border="1" id="ordered-dishes">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Món ăn</th>
+            <th>Giá bán</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="4">Tổng tiền:</td>
+            <td id="total-amount">0 VNĐ</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <form>
+        <div class="row1">
+          <select id="branch" name="branch">
+            <option value="">Chọn Chi Nhánh</option>
+            <option value="Cầu Giấy">Cầu Giấy</option>
+            <option value="Cầu Giấy">Đống Đa</option>
+            <option value="Cầu Giấy">Hà Đông</option>
+          </select>
+          <input type="text" id="name" placeholder="Họ và tên" />
+          <input type="email" id="email" placeholder="Địa chỉ email" />
+        </div>
+        <div class="row2">
+          <input type="number" id="adults" placeholder="Số lượng người" />
+          <input type="tel" id="phone" placeholder="Số điện thoại" />
+          <input type="date" id="date" placeholder="Ngày tháng" />
+          <select id="time" name="time">
+            <option value="">Khung giờ</option>
+            <option>11-13 giờ</option>
+            <option>13-15 giờ</option>
+            <option>15-17 giờ</option>
+            <option>17-19 giờ</option>
+            <option>19-21 giờ</option>
+            <option>21-23 giờ</option>
+          </select>
+        </div>
+        <div class="row3">
+          <textarea id="requests" placeholder="Yêu cầu đặc biệt"></textarea>
+        </div>
+        <button class="submit" type="button" onclick="submitReservation()">
+          Đặt Bàn
+        </button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <div class="contact-column">
+        <h3>Thông tin liên hệ</h3>
+        <p><strong>Địa điểm:</strong> Hàng Đậu</p>
+        <p><strong>Giờ mở cửa:</strong> 11:00 - 23:00</p>
+        <p><strong>Hotline:</strong> (+84) 4354354354</p>
+        <p><strong>Email:</strong> nhahangBTL@gmail.com</p>
+      </div>
+      <div class="contact-column">
+        <h3>Mạng xã hội</h3>
+        <p>
+          <strong>Facebook:</strong>
+          <a href="https://NhaHangBTL.fb.vn">NhaHangBTL.fb.vn</a>
+        </p>
+        <p>
+          <strong>YouTube:</strong>
+          <a href="https://NhaHangBTL.youtube.vn">NhaHangBTL.youtube.vn</a>
+        </p>
+        <p>
+          <strong>TikTok:</strong>
+          <a href="https://NhaHangBTL.tiktok.vn">NhaHangBTL.tiktok.vn</a>
+        </p>
+      </div>
+    </div>
+    <script>
+      function submitReservation() {
+        const branch = document.getElementById("branch");
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const adults = document.getElementById("adults");
+        const phone = document.getElementById("phone");
+        const date = document.getElementById("date");
+        const time = document.getElementById("time");
+
+        if (!branch.value) {
+          alert("Vui lòng chọn chi nhánh.");
+          branch.focus();
+          return;
+        }
+
+        if (!name.value) {
+          alert("Vui lòng điền tên.");
+          name.focus();
+          return;
+        }
+
+        if (!email.value) {
+          alert("Vui lòng điền email.");
+          email.focus();
+          return;
+        }
+
+        if (!adults.value || adults.value <= 0) {
+          alert("Vui lòng điền số lượng người.");
+          adults.focus();
+          return;
+        }
+
+        if (!phone.value) {
+          alert("Vui lòng điền số điện thoại.");
+          phone.focus();
+          return;
+        }
+
+        if (!date.value) {
+          alert("Vui lòng chọn ngày đặt.");
+          date.focus();
+          return;
+        }
+
+        if (!time.value) {
+          alert("Vui lòng chọn khung giờ.");
+          time.focus();
+          return;
+        }
+
+        alert("Đặt bàn thành công!");
+      }
+
+      window.onload = function () {
+        let orderedDishes =
+          JSON.parse(localStorage.getItem("orderedDishes")) || [];
+        const tbody = document.querySelector("#ordered-dishes tbody");
+
+        orderedDishes.forEach((dish, index) => {
+          const price = parseFloat(dish.price);
+          const quantity = parseInt(dish.quantity);
+          const totalPrice = price * quantity;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${dish.name}</td>
+                    <td>${price.toLocaleString("vi-VN")}.000 VNĐ</td>
+                    <td>
+                        <button class="quantity-button" onclick="updateQuantity('${
+                          dish.name
+                        }', -1)">-</button>
+                        <span id="quantity-${dish.name}">${quantity}</span>
+                        <button class="quantity-button" onclick="updateQuantity('${
+                          dish.name
+                        }', 1)">+</button>
+                    </td>
+                    <td class="total-price" id="total-${
+                      dish.name
+                    }">${totalPrice.toLocaleString("vi-VN")}.000 VNĐ</td>
+                    <td><button onclick="removeDish('${
+                      dish.name
+                    }')"><i class="fas fa-trash"></i></button></td>
+                `;
+          tbody.appendChild(row);
+        });
+
+        updateTotalAmount(orderedDishes);
+      };
+
+      function updateQuantity(dishName, quantityChange) {
+        let orderedDishes =
+          JSON.parse(localStorage.getItem("orderedDishes")) || [];
+
+        const dish = orderedDishes.find((dish) => dish.name === dishName);
+        if (dish) {
+          dish.quantity += quantityChange;
+          if (dish.quantity <= 0) {
+            removeDish(dishName);
+          } else {
+            localStorage.setItem(
+              "orderedDishes",
+              JSON.stringify(orderedDishes)
+            );
+            document.getElementById(`quantity-${dishName}`).textContent =
+              dish.quantity;
+
+            const price = parseFloat(dish.price);
+            const totalPrice = price * dish.quantity;
+            const totalPriceCell = document.getElementById(
+              `total-${dish.name}`
+            );
+            totalPriceCell.textContent =
+              totalPrice.toLocaleString("vi-VN") + ".000 VNĐ";
+
+            updateTotalAmount(orderedDishes);
+          }
+        }
+      }
+
+      function removeDish(dishName) {
+        let orderedDishes =
+          JSON.parse(localStorage.getItem("orderedDishes")) || [];
+
+        const index = orderedDishes.findIndex((dish) => dish.name === dishName);
+        if (index >= 0) {
+          orderedDishes.splice(index, 1);
+          localStorage.setItem("orderedDishes", JSON.stringify(orderedDishes));
+          window.location.reload();
+        }
+      }
+
+      function updateTotalAmount(orderedDishes) {
+        const totalAmount = orderedDishes.reduce((total, dish) => {
+          const price = parseFloat(dish.price);
+          const quantity = parseInt(dish.quantity);
+          return total + price * quantity;
+        }, 0);
+        document.getElementById("total-amount").textContent =
+          totalAmount.toLocaleString("vi-VN") + ".000 VNĐ";
+      }
+    </script>
+  </body>
+</html>

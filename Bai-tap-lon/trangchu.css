@@ -1,0 +1,383 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.navbar .logo span {
+  color: #ffd700;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.navbar .nav-links a:hover {
+  text-decoration: underline;
+}
+.navbar .login {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.navbar .login input {
+  padding: 5px 10px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+.navbar .login .btn {
+  padding: 5px 10px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navbar .login .btn:hover {
+  background-color: #ffd700;
+  color: black;
+}
+.hero {
+  background: no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: background-change 30s infinite;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes background-change {
+  0% {
+    background-image: url("https://www.vietnambooking.com/wp-content/uploads/2022/03/nhung-quan-co-view-dep-o-ha-noi-1-1.jpg");
+  }
+  33% {
+    background-image: url("https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  }
+  66% {
+    background-image: url("https://i.vietgiaitri.com/2022/1/15/cach-lam-mon-vit-quay-tu-xuyen-ngon-chuan-vi-4e1-6269862.jpg");
+  }
+  100% {
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20221120/pngtree-closeup-of-sushi-rolls-with-vegetable-filling-meal-food-set-photo-image_41131240.jpg");
+  }
+}
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+}
+.hero h1 span {
+  color: #ffd700;
+}
+.hero p {
+  font-size: 24px;
+  margin: 10px 0 20px;
+}
+.hero .buttons {
+  display: flex;
+  gap: 20px;
+}
+.hero .buttons button {
+  padding: 10px 20px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+.hero .buttons button:hover {
+  background-color: #ffd700;
+  color: black;
+}
+.main {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.slides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  background-position: center;
+  background-size: cover;
+}
+
+#s1 {
+  background-image: url("https://sonorestaurant.com.au/wp-content/uploads/2024/04/home-slide-3.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#s2 {
+  background-image: url("https://lasinfoniavietnam.com/wp-content/uploads/2023/06/the-eroica-restaurant-food-1-1.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#s3 {
+  background-image: url("https://lasinfoniavietnam.com/wp-content/uploads/2023/06/the-eroica-restaurant-food-22-1-scaled.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#s4 {
+  background-image: url("https://sonorestaurant.com.au/wp-content/uploads/2024/04/Japanese-Tempura-Sono-Restaurant.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.slides h2 {
+  font-size: 50px;
+  margin: -5px 0px;
+  color: #ffd700;
+  font-family: "nebbiolo";
+  margin-top: 20px;
+}
+.order-button {
+  margin-top: 600px;
+  font-weight: 700;
+  font-size: 20px;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.back-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  border: 1px solid #ffd700;
+  border-radius: 15px;
+  background-color: transparent;
+  color: #ffd700;
+  cursor: pointer;
+}
+
+.back-button {
+  left: 50px;
+}
+
+.next-button {
+  right: 50px;
+}
+
+.back-button:hover,
+.next-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.container {
+  background-image: url("https://sonorestaurant.com.au/wp-content/uploads/2022/02/patern-dark-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+  text-align: center;
+  height: auto;
+  margin-top: -20px;
+}
+
+.container p {
+  margin-top: 16px;
+  padding: 0px 25px 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 50px;
+  color: #ffd700;
+  font-family: "nebbiolo";
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 3px solid #f6fd3e;
+  background-color: black;
+}
+
+.contact-column {
+  flex: 1 1 30%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-column {
+  margin-bottom: 10px;
+  margin-left: 100px;
+}
+
+.contact-column p {
+  margin: 5px 0;
+}
+.contact-column h3 {
+  color: #eedf32;
+}
+
+.contact-column a {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-column a:hover {
+  color: yellow;
+}
+
+body,
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .navbar .nav-links {
+    gap: 10px;
+  }
+  .navbar logo {
+    text-align: right;
+  }
+  .hero h1 {
+    font-size: 30px;
+  }
+  .hero p {
+    font-size: 18px;
+  }
+  .hero .buttons {
+    flex-direction: column;
+  }
+  .slides h2 {
+    font-size: 30px;
+  }
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-column {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 10px;
+    margin-left: 50px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .navbar {
+    padding: 15px;
+  }
+  .hero h1 {
+    font-size: 40px;
+  }
+  .hero p {
+    font-size: 20px;
+  }
+  .slides h2 {
+    font-size: 40px;
+  }
+  .contact-column {
+    flex: 1 1 30%;
+    padding: 10px;
+    margin-left: 45px;
+  }
+}
+
+#loginForm,
+#registerForm {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+}
+.login-modal h2 {
+  color: black;
+  text-align: center;
+}
+.login-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-direction: column;
+}
+.login-modal button {
+  width: 100px;
+  height: 50px;
+  margin-top: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 100px;
+}
+
+.close {
+  cursor: pointer;
+  float: right;
+  font-size: 24px;
+  color: black;
+}
+.login-modal .register {
+  color: black;
+  margin-left: 120px;
+  margin-top: 10px;
+  cursor: pointer;
+}
